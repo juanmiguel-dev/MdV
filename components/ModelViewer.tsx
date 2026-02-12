@@ -15,18 +15,21 @@ export const ModelViewer: React.FC<{ path: string; title: string; description: s
   return (
     <div className="flex flex-col bg-slate-900/50 rounded-3xl border border-slate-800 overflow-hidden backdrop-blur-sm group hover:border-cyan-500/50 transition-all duration-500 shadow-xl">
       <div className="h-[300px] w-full relative bg-slate-950/50">
-        <Canvas shadows camera={{ position: [0, 0, 4], fov: 45 }}>
+        <Canvas shadows camera={{ position: [0, 0, 10], fov: 50 }}>
           <Suspense fallback={null}>
-            <Stage environment="city" intensity={0.5} contactShadow={true} adjustCamera={true}>
+            <ambientLight intensity={1.5} />
+            <pointLight position={[10, 10, 10]} intensity={2} />
+            <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} intensity={2} />
+            <Stage environment="city" intensity={0.6} contactShadow={true} adjustCamera={true}>
               <Center>
                 <Model path={path} />
               </Center>
             </Stage>
           </Suspense>
-          <OrbitControls makeDefault autoRotate autoRotateSpeed={0.5} enableZoom={false} />
+          <OrbitControls makeDefault autoRotate autoRotateSpeed={1} enableZoom={true} />
         </Canvas>
-        <div className="absolute bottom-4 right-4 bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-full border border-slate-800 text-[10px] text-cyan-400 font-orbitron uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-          3D Interactivo
+        <div className="absolute top-4 left-4 bg-cyan-500/10 text-cyan-400 text-[10px] px-2 py-1 rounded border border-cyan-500/20 font-orbitron">
+          INTERACTIVO
         </div>
       </div>
       <div className="p-6">
