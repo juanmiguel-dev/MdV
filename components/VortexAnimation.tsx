@@ -61,6 +61,6 @@ const VortexAnimation: React.FC = memo(() => {
       `}</style>
     </div>
   );
-};
+});
 
 export default VortexAnimation;
