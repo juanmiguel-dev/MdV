@@ -58,7 +58,6 @@ export const ModelViewer: React.FC<{ path: string; title: string; description: s
           )}
         </div>
       </div>
-      </div>
       <div className="p-6">
         <h4 className="font-orbitron font-bold text-cyan-400 mb-2">{title}</h4>
         <p className="text-sm text-slate-400 leading-relaxed">{description}</p>
