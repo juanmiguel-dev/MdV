@@ -53,7 +53,13 @@ export const ModelViewer: React.FC<{ path: string; title: string; description: s
   return (
     <div className="flex flex-col bg-slate-900/50 rounded-3xl border border-slate-800 overflow-hidden backdrop-blur-sm group hover:border-cyan-500/50 transition-all duration-500 shadow-xl min-h-[450px]">
       <div className="h-[300px] w-full relative bg-slate-950/50">
-        <Canvas shadows camera={{ position: [0, 0, 10], fov: 50 }} dpr={[1, 2]}>
+        <Canvas 
+          shadows 
+          camera={{ position: [0, 0, 10], fov: 50 }} 
+          dpr={1} 
+          frameloop="demand"
+          performance={{ min: 0.5 }}
+        >
           <Suspense fallback={<LoadingSpinner />}>
             <ambientLight intensity={1} />
             <pointLight position={[10, 10, 10]} intensity={1.5} />
