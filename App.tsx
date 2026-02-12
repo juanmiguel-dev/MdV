@@ -271,26 +271,6 @@ const App: React.FC = () => {
                 </div>
               ))}
             </div>
-
-            <div className="p-10 rounded-[3rem] bg-gradient-to-br from-cyan-600 to-blue-800 text-white relative overflow-hidden group">
-              <div className="absolute top-0 right-0 p-8 opacity-20 transform translate-x-1/4 -translate-y-1/4 group-hover:scale-110 transition-transform duration-1000">
-                <Zap className="w-64 h-64" />
-              </div>
-              <div className="relative z-10">
-                <h3 className="text-3xl font-orbitron font-black mb-6">¿Preparado para el desafío?</h3>
-                <p className="text-xl text-cyan-50/80 mb-8 max-w-xl">
-                  El futuro de la energía no será inventado en un laboratorio corporativo. Será construido en nuestros garajes.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <button className="px-8 py-4 bg-white text-slate-950 font-bold rounded-full hover:bg-cyan-50 transition-colors flex items-center">
-                    Compartir Resultados <ExternalLink className="ml-2 w-4 h-4" />
-                  </button>
-                  <button className="px-8 py-4 bg-slate-950/20 backdrop-blur-md border border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-colors flex items-center">
-                    Ver Comunidad <Github className="ml-2 w-5 h-5" />
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
