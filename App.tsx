@@ -116,21 +116,25 @@ const App: React.FC = () => {
               path="/planos/cavidad_superior.glb" 
               title="Cavidad de Entrada" 
               description="Diseño optimizado para inducir el flujo tangencial inicial. La curvatura interna minimiza la fricción y maximiza la velocidad angular del fluido." 
+              color="#0ea5e9"
             />
             <ModelViewer 
               path="/planos/cavidad_inferior.glb" 
               title="Cámara de Compresión" 
               description="Zona donde el vórtice alcanza su máxima densidad. La geometría ovoide permite la formación del núcleo de vacío necesario para la implosión." 
+              color="#3b82f6"
             />
             <ModelViewer 
               path="/planos/rotor-v1.glb" 
               title="Rotor de Succión" 
               description="El elemento activo que mantiene la rotación del fluido. Sus brazos curvos están diseñados siguiendo proporciones áureas para una eficiencia energética superior." 
+              color="#10b981"
             />
             <ModelViewer 
               path="/planos/turbina_pelton.glb" 
               title="Turbina Generadora" 
               description="Sistema de captación de energía cinética en la salida. Convierte el flujo laminar residual en torque mecánico para la generación eléctrica." 
+              color="#f59e0b"
             />
           </div>
         </div>
