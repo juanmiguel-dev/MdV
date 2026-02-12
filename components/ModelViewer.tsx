@@ -1,6 +1,6 @@
-import React, { Suspense, useLayoutEffect } from 'react';
+import React, { Suspense, useLayoutEffect, useMemo } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Stage, Center, Loader } from '@react-three/drei';
+import { OrbitControls, useGLTF, Stage, Center } from '@react-three/drei';
 import * as THREE from 'three';
 
 // Preload common models to avoid waterfalls
@@ -17,26 +17,29 @@ interface ModelProps {
 const Model = ({ path, color }: ModelProps) => {
   const { scene } = useGLTF(path);
   
-  useLayoutEffect(() => {
-    // Clone scene to avoid shared material issues between multiple viewers
-    const clonedScene = scene.clone();
-    clonedScene.traverse((obj) => {
+  // Clone and modify scene only when path or color changes
+  const clonedScene = useMemo(() => {
+    const clone = scene.clone();
+    clone.traverse((obj) => {
       if (obj instanceof THREE.Mesh) {
         // Create new material for each mesh to allow individual coloring
-        obj.material = obj.material.clone();
+        const newMaterial = obj.material.clone();
         
         if (color) {
-          obj.material.color.set(color);
+          newMaterial.color.set(color);
         }
-        obj.material.roughness = 0.3;
-        obj.material.metalness = 0.8;
-        obj.material.emissive = new THREE.Color(color || '#0ea5e9');
-        obj.material.emissiveIntensity = 0.2;
+        newMaterial.roughness = 0.3;
+        newMaterial.metalness = 0.8;
+        newMaterial.emissive = new THREE.Color(color || '#0ea5e9');
+        newMaterial.emissiveIntensity = 0.2;
+        
+        obj.material = newMaterial;
       }
     });
+    return clone;
   }, [scene, color]);
 
-  return <primitive object={scene} />;
+  return <primitive object={clonedScene} />;
 };
 
 const LoadingSpinner = () => (
