@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { MATERIALS, STEPS, VALIDATIONS, TOOLS } from './constants';
 import VortexAnimation from './components/VortexAnimation';
+import { Step3Illustration, Step4Illustration } from './components/StepIllustrations';
 
 // Helper for dynamic icons
 const IconMap: Record<string, React.ReactNode> = {
@@ -198,7 +199,13 @@ const App: React.FC = () => {
             <div className="lg:w-2/3">
               <div className="bg-slate-950 rounded-[2.5rem] border border-slate-800 overflow-hidden shadow-2xl transition-all duration-500">
                 <div className="relative h-64 overflow-hidden">
-                  <img src={STEPS[activeStep].image} alt={STEPS[activeStep].title} className="w-full h-full object-cover opacity-60" />
+                  {activeStep === 2 ? (
+                    <Step3Illustration />
+                  ) : activeStep === 3 ? (
+                    <Step4Illustration />
+                  ) : (
+                    <img src={STEPS[activeStep].image} alt={STEPS[activeStep].title} className="w-full h-full object-cover opacity-60" />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                   <div className="absolute bottom-6 left-10">
                     <span className="inline-block px-3 py-1 rounded bg-cyan-500 text-slate-950 text-xs font-black uppercase mb-2">Fase de Construcción</span>
