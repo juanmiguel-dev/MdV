@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Beaker, Settings, Zap, Droplets, Battery, Cpu, Drill, Scissors, Ruler } from 'lucide-react';
-import { Material, Step, ValidationMetric } from './types';
+import { Material, Step } from './types';
 
 export const MATERIALS: Material[] = [
   { name: 'Cavidad Resonante', description: 'Botella PET 2L o Recipiente ovoide', icon: 'Droplets' },
@@ -76,10 +76,4 @@ export const STEPS: Step[] = [
     ],
     image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&q=80&w=800'
   }
-];
-
-export const VALIDATIONS: ValidationMetric[] = [
-  { level: 'Nivel 1', title: 'Éxito Básico', description: 'El LED parpadea débilmente.', color: 'border-yellow-500 text-yellow-500' },
-  { level: 'Nivel 2', title: 'Éxito Intermedio', description: 'El LED permanece encendido continuamente.', color: 'border-cyan-500 text-cyan-500' },
-  { level: 'Nivel 3', title: 'Éxito Avanzado', description: 'COP > 1. Auto-alimentación parcial.', color: 'border-green-500 text-green-500' }
 ];

@@ -16,7 +16,7 @@ import {
   Battery,
   Cpu
 } from 'lucide-react';
-import { MATERIALS, STEPS, VALIDATIONS, TOOLS } from './constants';
+import { MATERIALS, STEPS, TOOLS } from './constants';
 import VortexAnimation from './components/VortexAnimation';
 import { Step3Illustration, Step4Illustration } from './components/StepIllustrations';
 import { ModelViewer } from './components/ModelViewer';
@@ -58,7 +58,6 @@ const App: React.FC = () => {
             <a href="#about" className="hover:text-cyan-400 transition-colors">Origen</a>
             <a href="#materials" className="hover:text-cyan-400 transition-colors">Materiales</a>
             <a href="#guide" className="hover:text-cyan-400 transition-colors">Construcción</a>
-            <a href="#testing" className="hover:text-cyan-400 transition-colors">Pruebas</a>
           </div>
 
           <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden p-2 text-cyan-400">
@@ -295,28 +294,6 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Testing Section */}
-      <section id="testing" className="py-24">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center space-x-4 mb-12">
-              <Info className="text-cyan-500 w-8 h-8" />
-              <h2 className="text-4xl font-orbitron font-bold">Validación y Métricas</h2>
-            </div>
-            
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
-              {VALIDATIONS.map((val, i) => (
-                <div key={i} className={`p-8 rounded-3xl border-2 bg-slate-900/50 flex flex-col items-center text-center ${val.color} backdrop-blur-sm`}>
-                  <div className="text-sm font-black uppercase tracking-widest mb-4 opacity-70">{val.level}</div>
-                  <h3 className="text-xl font-orbitron font-bold mb-4">{val.title}</h3>
-                  <p className="text-sm opacity-80 leading-relaxed">{val.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="py-20 border-t border-slate-900">
         <div className="container mx-auto px-6">
@@ -349,7 +326,6 @@ const App: React.FC = () => {
           <a href="#about" onClick={() => setIsMenuOpen(false)} className="text-3xl font-orbitron font-bold text-cyan-400">Origen</a>
           <a href="#materials" onClick={() => setIsMenuOpen(false)} className="text-3xl font-orbitron font-bold text-cyan-400">Materiales</a>
           <a href="#guide" onClick={() => setIsMenuOpen(false)} className="text-3xl font-orbitron font-bold text-cyan-400">Guía</a>
-          <a href="#testing" onClick={() => setIsMenuOpen(false)} className="text-3xl font-orbitron font-bold text-cyan-400">Validación</a>
         </div>
       )}
     </div>

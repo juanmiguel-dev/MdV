@@ -12,10 +12,3 @@ export interface Step {
   details: string[];
   image: string;
 }
-
-export interface ValidationMetric {
-  level: string;
-  title: string;
-  description: string;
-  color: string;
-}
