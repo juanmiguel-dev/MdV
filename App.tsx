@@ -19,6 +19,7 @@ import {
 import { MATERIALS, STEPS, VALIDATIONS, TOOLS } from './constants';
 import VortexAnimation from './components/VortexAnimation';
 import { Step3Illustration, Step4Illustration } from './components/StepIllustrations';
+import { ModelViewer } from './components/ModelViewer';
 
 // Helper for dynamic icons
 const IconMap: Record<string, React.ReactNode> = {
@@ -53,6 +54,7 @@ const App: React.FC = () => {
           </div>
           
           <div className="hidden md:flex items-center space-x-8 font-medium text-sm tracking-widest text-slate-400 uppercase">
+            <a href="#theory" className="hover:text-cyan-400 transition-colors">Teoría 3D</a>
             <a href="#about" className="hover:text-cyan-400 transition-colors">Origen</a>
             <a href="#materials" className="hover:text-cyan-400 transition-colors">Materiales</a>
             <a href="#guide" className="hover:text-cyan-400 transition-colors">Construcción</a>
@@ -82,19 +84,55 @@ const App: React.FC = () => {
             Generador negentrópico basado en la implosión del Éter. Inspirado en el legado de <strong>Viktor Schauberger</strong>.
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-            <a href="#guide" className="w-full md:w-auto px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-full transition-all flex items-center justify-center group">
-              Empezar Construcción
+            <a href="#theory" className="w-full md:w-auto px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-full transition-all flex items-center justify-center group">
+              Explorar Teoría 3D
               <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
-            <button className="w-full md:w-auto px-8 py-4 bg-slate-900 border border-slate-700 hover:border-cyan-500/50 rounded-full transition-all flex items-center justify-center space-x-2">
+            <a href="#guide" className="w-full md:w-auto px-8 py-4 bg-slate-900 border border-slate-700 hover:border-cyan-500/50 rounded-full transition-all flex items-center justify-center space-x-2">
               <Play className="w-5 h-5 text-cyan-500" fill="currentColor" />
-              <span>Ver Teoría</span>
-            </button>
+              <span>Empezar Construcción</span>
+            </a>
           </div>
         </div>
 
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
           <ChevronDown className="text-cyan-500 opacity-50" />
+        </div>
+      </section>
+
+      {/* Theory 3D Section */}
+      <section id="theory" className="py-24 bg-slate-950 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-orbitron font-black mb-6 tracking-tighter">ANÁLISIS <span className="text-cyan-400">TEÓRICO 3D</span></h2>
+            <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed">
+              Visualiza los componentes fundamentales del Motor de Vórtice. Interactúa con los planos tridimensionales para comprender la dinámica de fluidos y la geometría sagrada detrás de la implosión.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <ModelViewer 
+              path="/planos/cavidad_superior.glb" 
+              title="Cavidad de Entrada" 
+              description="Diseño optimizado para inducir el flujo tangencial inicial. La curvatura interna minimiza la fricción y maximiza la velocidad angular del fluido." 
+            />
+            <ModelViewer 
+              path="/planos/cavidad_inferior.glb" 
+              title="Cámara de Compresión" 
+              description="Zona donde el vórtice alcanza su máxima densidad. La geometría ovoide permite la formación del núcleo de vacío necesario para la implosión." 
+            />
+            <ModelViewer 
+              path="/planos/rotor-v1.glb" 
+              title="Rotor de Succión" 
+              description="El elemento activo que mantiene la rotación del fluido. Sus brazos curvos están diseñados siguiendo proporciones áureas para una eficiencia energética superior." 
+            />
+            <ModelViewer 
+              path="/planos/turbina_pelton.glb" 
+              title="Turbina Generadora" 
+              description="Sistema de captación de energía cinética en la salida. Convierte el flujo laminar residual en torque mecánico para la generación eléctrica." 
+            />
+          </div>
         </div>
       </section>
 
