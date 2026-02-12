@@ -343,9 +343,10 @@ const App: React.FC = () => {
           <button onClick={() => setIsMenuOpen(false)} className="absolute top-6 right-6 p-2 text-cyan-400">
             <X size={32} />
           </button>
+          <a href="#theory" onClick={() => setIsMenuOpen(false)} className="text-3xl font-orbitron font-bold text-cyan-400">Teoría 3D</a>
           <a href="#about" onClick={() => setIsMenuOpen(false)} className="text-3xl font-orbitron font-bold text-cyan-400">Origen</a>
           <a href="#materials" onClick={() => setIsMenuOpen(false)} className="text-3xl font-orbitron font-bold text-cyan-400">Materiales</a>
-          <a href="#guide" onClick={() => setIsMenuOpen(false)} className="text-3xl font-orbitron font-bold text-cyan-400">Guía</a>
+          <a href="#guide" onClick={() => setIsMenuOpen(false)} className="text-3xl font-orbitron font-bold text-cyan-400">Construcción</a>
         </div>
       )}
     </div>
