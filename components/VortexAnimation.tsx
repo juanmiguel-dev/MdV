@@ -1,11 +1,11 @@
 
-import React from 'react';
+import React, { memo } from 'react';
 
-const VortexAnimation: React.FC = () => {
+const VortexAnimation: React.FC = memo(() => {
   return (
-    <div className="relative w-full h-full flex items-center justify-center opacity-60 pointer-events-none overflow-hidden">
+    <div className="relative w-full h-full flex items-center justify-center opacity-60 pointer-events-none overflow-hidden will-change-transform">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.15)_0%,transparent_70%)] blur-3xl animate-pulse-slow"></div>
-      <svg className="w-[140%] h-[140%] animate-vortex-smooth" viewBox="0 0 100 100">
+      <svg className="w-[140%] h-[140%] animate-vortex-smooth" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
         <defs>
           <radialGradient id="grad" cx="50%" cy="50%" r="50%">
             <stop offset="0%" style={{ stopColor: '#0ea5e9', stopOpacity: 0.6 }} />

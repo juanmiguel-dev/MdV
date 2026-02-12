@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { 
   Menu, 
   X, 
@@ -19,7 +19,19 @@ import {
 import { MATERIALS, STEPS, TOOLS } from './constants';
 import VortexAnimation from './components/VortexAnimation';
 import { Step3Illustration, Step4Illustration } from './components/StepIllustrations';
-import { ModelViewer } from './components/ModelViewer';
+
+// Lazy load heavy 3D components
+const ModelViewer = lazy(() => import('./components/ModelViewer').then(module => ({ default: module.ModelViewer })));
+
+// Loading placeholder for lazy sections
+const SectionLoader = () => (
+  <div className="w-full h-[400px] flex items-center justify-center bg-slate-900/20 rounded-3xl border border-slate-800 animate-pulse">
+    <div className="flex flex-col items-center space-y-4">
+      <div className="w-12 h-12 bg-cyan-500/20 rounded-full animate-spin border-t-2 border-cyan-500"></div>
+      <span className="text-cyan-500/50 font-orbitron text-xs tracking-widest uppercase">Cargando Módulo 3D...</span>
+    </div>
+  </div>
+);
 
 // Helper for dynamic icons
 const IconMap: Record<string, React.ReactNode> = {
@@ -111,30 +123,38 @@ const App: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <ModelViewer 
-              path="/planos/cavidad_superior.glb" 
-              title="Cavidad de Entrada" 
-              description="Diseño optimizado para inducir el flujo tangencial inicial. La curvatura interna minimiza la fricción y maximiza la velocidad angular del fluido." 
-              color="#0ea5e9"
-            />
-            <ModelViewer 
-              path="/planos/cavidad_inferior.glb" 
-              title="Cámara de Compresión" 
-              description="Zona donde el vórtice alcanza su máxima densidad. La geometría ovoide permite la formación del núcleo de vacío necesario para la implosión." 
-              color="#3b82f6"
-            />
-            <ModelViewer 
-              path="/planos/rotor-v1.glb" 
-              title="Rotor de Succión" 
-              description="El elemento activo que mantiene la rotación del fluido. Sus brazos curvos están diseñados siguiendo proporciones áureas para una eficiencia energética superior." 
-              color="#10b981"
-            />
-            <ModelViewer 
-              path="/planos/turbina_pelton.glb" 
-              title="Turbina Generadora" 
-              description="Sistema de captación de energía cinética en la salida. Convierte el flujo laminar residual en torque mecánico para la generación eléctrica." 
-              color="#f59e0b"
-            />
+            <Suspense fallback={<SectionLoader />}>
+              <ModelViewer 
+                path="/planos/cavidad_superior.glb" 
+                title="Cavidad de Entrada" 
+                description="Diseño optimizado para inducir el flujo tangencial inicial. La curvatura interna minimiza la fricción y maximiza la velocidad angular del fluido." 
+                color="#0ea5e9"
+              />
+            </Suspense>
+            <Suspense fallback={<SectionLoader />}>
+              <ModelViewer 
+                path="/planos/cavidad_inferior.glb" 
+                title="Cámara de Compresión" 
+                description="Zona donde el vórtice alcanza su máxima densidad. La geometría ovoide permite la formación del núcleo de vacío necesario para la implosión." 
+                color="#3b82f6"
+              />
+            </Suspense>
+            <Suspense fallback={<SectionLoader />}>
+              <ModelViewer 
+                path="/planos/rotor-v1.glb" 
+                title="Rotor de Succión" 
+                description="El elemento activo que mantiene la rotación del fluido. Sus brazos curvos están diseñados siguiendo proporciones áureas para una eficiencia energética superior." 
+                color="#10b981"
+              />
+            </Suspense>
+            <Suspense fallback={<SectionLoader />}>
+              <ModelViewer 
+                path="/planos/turbina_pelton.glb" 
+                title="Turbina Generadora" 
+                description="Sistema de captación de energía cinética en la salida. Convierte el flujo laminar residual en torque mecánico para la generación eléctrica." 
+                color="#f59e0b"
+              />
+            </Suspense>
           </div>
         </div>
       </section>
